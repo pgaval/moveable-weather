@@ -1,0 +1,44 @@
+This is a sample app that goes through the OAuth authorization dance
+and then makes a single Latitude request.
+
+First, go to https://www.google.com/accounts/ManageDomains to register and
+verify an app domain.  This should provide you with an OAuth consumer key and
+an OAuth consumer secret.  The app needs to be configured with these values.
+
+To start the app, run:
+
+    tools/gae run app
+
+To configure the app with your consumer key and secret, leave the app running,
+open a new terminal window, and type this command:
+
+    tools/console
+
+This will give you a Python prompt.  At the prompt, type these commands:
+
+    >>> from main import Config
+    >>> Config.set('oauth_consumer_key', '<your consumer key>')
+    >>> Config.set('oauth_consumer_secret', '<your consumer secret>')
+
+Then, to authorize and perform the request, go to:
+
+    http://localhost:8080/
+
+The main application behaviour is in main.py, so you would probably start
+there to develop your app.  (You shouldn't need to edit the modules
+latitude.py, oauth.py, oauth_appengine.py, and oauth_webapp.py, which
+implement the OAuth client.)
+
+
+-- Ka-Ping Yee <kpy@google.com>
+
+
+------------
+while (1):
+   make fill LIMIT=100
+
+-------
+Notes:
+troubleshooting: if you can login but oauth does nothing, ie blank screen,
+try deleting member data, to force oauth to re-authorize
+

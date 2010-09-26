@@ -1,0 +1,10 @@
+{% load i18n %}{% extends "page.html" %}
+{% block page %}main{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+  <p>
+Thanks for signing up. I see your email is {{email}} please call up  {{pretty_app_name}} at {{pretty_app_phone}} and give {{passw}} as your password. This will identify your phone to the system for future calls.
+</div>
+{% endblock %}

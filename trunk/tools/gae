@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pushd "$(dirname $0)" >/dev/null && source common.sh && popd >/dev/null
+
+if [ "$1" == "run" ]; then
+  shift
+  $PYTHON $APPENGINE_DIR/dev_appserver.py "$@"
+else
+  $PYTHON $APPENGINE_DIR/appcfg.py "$@"
+fi

@@ -1,0 +1,29 @@
+{% load i18n %}{% extends "page.html" %}
+{% block page %}main{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+  <table class="leaders" align=left>
+
+    <tr>
+      <td class="tag">{{location}}</td>
+    </tr>
+
+    <tr>
+      <td class="tag">{{ city }}, {{ state }}{{ postalCode }}</td>
+    </tr>
+
+    <tr>
+      <td class="tag">{{ temp_f }}, {{ condition }}</td>
+    </tr>
+
+    <tr>
+      <td class="tag">{{ wind_condition }}</td>
+    </tr>
+
+
+
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+bulk upload
+zipcode csv file
+oauth
+google latitude
+location-based services
+
+the problem
+     we want to know our zipcode, starting with info provided by latitude
+     this requires a reverse-lookup (what's it called)
+     there are web-based services for doing this, but it's metered
+
+oauth:
+  oauth uses tokens to authorize users
+  but it's web based
+  we identify users by their cellphone
+  simple scheme we adopt is:
+     authenticate with oauth online
+     from this , we get a password
+     we call up, and give the password
+     this associates our phone with our oauth token
+
+
+GeoModel
+we load all the locations, using bulkloader
+then we iterate through the locations, calling update_location
+      """Syncs underlying geocell properties with the entity's location.
+
+    Updates the underlying geocell properties of the entity to match the
+    entity's location property. A put() must occur after this call to save
+    the changes to App Engine."""
+
+
+geomodel.py
+"""Defines the GeoModel class for running basic geospatial queries on
+single-point geographic entities in Google App Engine.
+
+TODO(romannurik): document how bounding box and proximity queries work.
+"""
+
+Here's the crucial call
+
+      zip_records = model.ZipCode.proximity_fetch(
+                            model.ZipCode.all(),  # Rich query!
+                            geo.geotypes.Point(lat, lng),  # Or db.GeoPt
+                            max_results=10,
+                            max_distance=16000)  # Within 100 miles.
+
+
+components I assembled
+oauth and latitude integration sample from folks at Google
+   http://code.google.com/p/latitudesample/
+geomodel library 
+    http://pypi.python.org/pypi/geomodel/0.2.0
+bulkloader , app engine
+    http://code.google.com/appengine/docs/python/tools/uploadingdata.html
+tropo web api
+    http://github.com/tropo/tropo-webapi-python     
+Google's weather api
+    "http://www.google.com/ig/api"

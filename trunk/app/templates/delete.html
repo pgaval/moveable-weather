@@ -1,0 +1,10 @@
+{% load i18n %}{% extends "page.html" %}
+{% block page %}main{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+  <p>
+Ok {{nickname}} Thanks for trying out {{pretty_app_name}}. If you want to sign up again, then just go to <a href = "http://{{app_name}}.appspot.com">http://{{app_name}}.appspot.com</a>.
+</div>
+{% endblock %}
