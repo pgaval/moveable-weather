@@ -1,0 +1,32 @@
+{% load i18n %}{% extends "page.html" %}
+{% block page %}main{% endblock %}
+
+{% block content %}
+<div class="navigate">
+  {% trans "Watch, join, or create a tag" %}
+  <form method="get">
+    #<input name="tag" value="">
+    <button class="go" type="submit">Go</button>
+  </form>
+</div>
+
+<div class="dashboard">
+  <table class="leaders" align=center>
+  {% if tagstats %}
+    <tr><th colspan=2>Active tags</td></tr>
+  {% else %}
+    <tr><th colspan=2>No active tags</td></tr>
+  {% endif %}
+  {% for tagstat in tagstats %}
+    <tr>
+      <td class="tag">
+        <a href="/{{ tagstat.key.name|escape }}">
+          #{{ tagstat.key.name|escape }}
+        </a>
+      </td>
+      <td class="count">{{ tagstat.member_count|escape }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+</div>
+{% endblock %}

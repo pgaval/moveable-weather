@@ -1,0 +1,31 @@
+Create a new app called moveable-weather, 
+Edit my-globals.py
+Change value of APP in Makefile to moveable-weather
+Register your domain for oauth
+  by going to https://www.google.com/accounts/ManageDomains
+ 
+  Use the "upload an html file" method
+    create a special handler in appengine to field the url
+  
+  when they ask you for the target url path prefix, use
+           /oath_callback
+   This gives you  MY_OAUTHCONSUMER_SECRET = "wiExtkNLdsYsKAGZhhnyEemY"
+
+   (I just ran /set_my_oauth, because I was getting errors still)
+
+run "make upload" to bulkload the zipcode csvsfile
+   run the while(1): make  fill LIMIT=100
+
+
+----
+call the signup number
+enter your password
+call back, and get the weather
+
+now to go latitude site and set up iGoogle
+now move your little man
+
+go to google maps on your phone, and make sure latitude layer is enabled
+go to Google Latitude: and select "Detect my location automatically"
+now Moveable Weather will track you and your phone
+so, take a trip somewhere!

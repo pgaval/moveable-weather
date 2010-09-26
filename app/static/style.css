@@ -1,0 +1,51 @@
+body { font-family: helvetica, arial; font-size: 13px; }
+.tag { font-weight: bold; }
+
+/* Styles common to all pages. */
+
+#header div { position: absolute; top: 0; padding: 4px; }
+#header .title { display: block; left: 0; font-weight: bold; }
+#header .title a { text-decoration: none; color: #000; }
+#header .user { right: 0; padding: 4px 8px; }
+#header .email { font-weight: bold; }
+.content { padding: 4px; }
+
+/* Tag page. */
+
+#tag, #controls, #member-table { position: absolute; left: 0; }
+#tag { top: 24px; width: 250px; height: 40px; background: #dde; }
+#tag h1 { margin: 0; font-size: 26px; }
+#controls { top: 64px; width: 250px; height: 36px; white-space: nowrap; }
+#member-table { top: 100px; width: 250px; bottom: 0; }
+#member-table thead th { border-bottom: 1px solid #eef; }
+#member-table th, #member-table td { padding: 4px; }
+#member-table .nickname { text-align: left; }
+#member-table .distance { text-align: right; }
+#member-table tbody tr { cursor: pointer; }
+#member-select { display: none; }
+
+#map, .hshadow, .vshadow { position: absolute; left: 250px; top: 24px; }
+#map { right: 0; bottom: 0; }
+.hshadow { bottom: 0; background: #000; font-size: 1px; }
+.hs1 { width: 2px; opacity: 0.09; filter:alpha(opacity=9); }
+.hs2 { width: 3px; opacity: 0.06; filter:alpha(opacity=6); }
+.hs3 { width: 4px; opacity: 0.03; filter:alpha(opacity=3); }
+.vshadow { right: 0; background: #000; font-size: 1px; }
+.vs1 { height: 2px; opacity: 0.09; filter:alpha(opacity=9); }
+.vs2 { height: 3px; opacity: 0.06; filter:alpha(opacity=6); }
+.vs3 { height: 4px; opacity: 0.03; filter:alpha(opacity=3); }
+
+/* Main page. */
+
+#main-page .vshadow { left: 0; }
+.navigate { text-align: center; margin: 3em 0 2em; }
+.navigate, .navigate input, .navigate button {
+    font-family: helvetica, arial; font-size: 30px; }
+.navigate input { margin: 12px 4px; width: 8.5em; }
+.navigate button.go { position: relative; top: -1px; }
+
+.dashboard { font-size: 30px; text-align: center; }
+.leaders { width: 12em; }
+.leaders th { text-align: center; font-weight: normal; }
+.leaders td.tag { text-align: left; }
+.leaders td.count { text-align: right; }

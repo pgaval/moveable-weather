@@ -1,0 +1,20 @@
+{% load i18n %}{% extends "page.html" %}
+{% block page %}main{% endblock %}
+
+{% block content %}
+
+<h4>Location</h4>
+
+<ul>
+
+      <li>{{location}}</li>
+
+      <li>{{ city }}, {{ state }}{{ postalCode }}</li>
+
+      <li>{{ temp_f }}, {{ condition }}</li>
+
+      <li>{{ wind_condition }}</li>
+</ul>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+/* These sizes depend on the <meta name="viewport"> tag in page.html. */
+#tag-page #header { display: none; }
+#tag, #controls { background: none; width: 100%; }
+#header, #tag h1, #controls, #member-select { font-size: 22px; }
+#header .title { display: none; }
+.user .nickname { display: none; }
+#map, .vshadow { left: 0; top: 32px; }
+.hshadow { display: none; }
+#map { bottom: 32px; }
+#tag { top: 0; height: 32px; }
+#member-table { display: none; }
+#header .title, #header .user { padding-top: 7px; }
+#tag { padding-top: 3px; }
+#member-select { position: absolute; top: 4px; right: 4px; display: block; }
+#controls { top: auto; height: 31px; bottom: 0px; border-top: 1px solid #ccc; }
+#controls .content { margin-top: 2px; }
+#controls select { margin-top: -2px; }

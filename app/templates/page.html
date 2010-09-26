@@ -1,0 +1,67 @@
+{% load i18n %}<!doctype html public "-//W3C//HTML 4.01 Transitional//EN">
+<head>
+  <title>{% block title %} {{pretty_app_name}} {% endblock %}</title>
+  <meta http-equiv="refresh" content="60">
+  <link rel=stylesheet href="static/style.css">
+  {% if vars.is_mobile %}
+    <meta name="viewport" content="user-scalable=no">
+    <link rel=stylesheet href="static/mobile.css">
+  {% endif %}
+  <script>
+    var is_member = {{ vars.member|yesno:"true,false" }};
+    var is_mobile = {{ vars.is_mobile|yesno:"true,false" }};
+  </script>
+  {% block scripts %}{% endblock %}
+</head>
+
+<body>
+
+    <h3 align=center>{{pretty_app_name}}</h3>
+
+<h4>User</h4>
+      <ul>
+
+      {% if vars.user %}
+        <li>{{ vars.user.email|escape }}</li>
+        {% if vars.member %}
+          <li>Password:  {{vars.passw}}</li>
+
+        {% endif %}
+
+      {% endif %}
+</ul>
+
+
+
+
+  {% block content %}{% endblock %}
+
+<h4>Actions</h4>
+
+<ul>
+
+      {% if vars.user %}
+        {% if vars.member %}
+
+          <li><a href="{{ vars.member_delete_url|escape }}">{% trans "Revoke authorization of" %} {{pretty_app_name}}{% trans " to access your Latitude data" %}</a> </li>
+
+
+        {% endif %}
+
+
+        <li><a href="{{ vars.logout_url|escape }}">{% trans "Sign out" %}</a> of your Google account</li>
+
+
+
+
+      {% else %}
+
+        <li><a href="{{ vars.login_url|escape }}">{% trans "Sign in" %}</a> to your Google account</li>
+
+      {% endif %}
+</ul>
+
+  <div class="vshadow vs1"></div>
+  <div class="vshadow vs2"></div>
+  <div class="vshadow vs3"></div>
+</body>
