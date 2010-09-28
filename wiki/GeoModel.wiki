@@ -1,0 +1,38 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+GeoModel
+we load all the locations, using bulkloader
+then we iterate through the locations, calling update_location
+      """Syncs underlying geocell properties with the entity's location.
+
+    Updates the underlying geocell properties of the entity to match the
+    entity's location property. A put() must occur after this call to save
+    the changes to App Engine."""
+
+
+geomodel.py
+"""Defines the GeoModel class for running basic geospatial queries on
+single-point geographic entities in Google App Engine.
+
+TODO(romannurik): document how bounding box and proximity queries work.
+"""
+
+Here's the crucial call
+
+      zip_records = model.ZipCode.proximity_fetch(
+                            model.ZipCode.all(),  # Rich query!
+                            geo.geotypes.Point(lat, lng),  # Or db.GeoPt
+                            max_results=10,
+                            max_distance=16000)  # Within 100 miles.
+
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
