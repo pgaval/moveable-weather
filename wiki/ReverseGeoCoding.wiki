@@ -1,0 +1,17 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+the problem
+     we want to know our zipcode, starting with info provided by latitude
+     this requires a reverse-lookup (what's it called)
+     there are web-based services for doing this, but it's metered
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
