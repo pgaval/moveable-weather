@@ -1,0 +1,22 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+oauth:
+  oauth uses tokens to authorize users
+  but it's web based
+  we identify users by their cellphone
+  simple scheme we adopt is:
+     authenticate with oauth online
+     from this , we get a password
+     we call up, and give the password
+     this associates our phone with our oauth token
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
