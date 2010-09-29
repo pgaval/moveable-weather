@@ -1,8 +1,18 @@
+Using the GeoModule package for indexing and querying geospatial data in App Engine.
+
 = Introduction =
 
-The Google Weather API uses zip codes for it's lookup parameter, whereas Google Latitude delivers the data in terms of latitude and longitude. There are various web services, both free and commercial, that can map between these two, but the disadvantage of using an online service is that it's inevitably metered. Therefore, creating a datastore within your app is a nice way to go.
+Moveable Weather gets information about a user's location, from Google Latitude. This info is in terms 
+of longitude and latitude. But we then need to map a particular point in space to a zip code, so we an feed it to the  [http://blog.programmableweb.com/2010/02/08/googles-secret-weather-api/ Google Weather API].
 
-To this purpose,  Moveable Weather uses the CivicSpace US ZIP Code Database, which is released under Creative Commons, and available at http://www.boutell.com/zipcodes/.
+Now there's a publicly available csv file, called the [http://www.boutell.com/zipcodes/ CivicSpace US ZIP Code Database] which is released under Creative Commons, and can help us out here. However, each row of data in this csv file tells you the exact point, in terms of latitude and longitude, that a zip code is centered around. However, it remains to compute, for any latitude and longitude pair coming from a user, which zip code is in the closest proximity.
+
+This is called a "proximity search", and is just what the [http://pypi.python.org/pypi/geomodel/0.2.0 GeoModule] Python module  was designed for. However, we need to massage our zip code data into a form where GeoModel can use it.
+
+All of the required step take place once, during setup. The steps are:
+* Define a ZipCode model that inherits from GeoModel
+* Use Google's bulkload facility to upload the csv file
+
 
 However, this only gets us as far as mapping specific zipcodes to specific geographical coordinates. If we are to accept arbitrary US data, coming from Google Latitude, then we need a method for computing proximity.
 
