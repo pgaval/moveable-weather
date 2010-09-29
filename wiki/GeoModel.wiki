@@ -23,6 +23,22 @@ class ZipCode(GeoModel):
   dst = db.IntegerProperty()
 }}}
 
+However, there's one more step in preparing the data, after bulkloading it into the ZipCode datastore. We need to loop through each row in the ZipCode table, calling update_location on it. This is the function that ensures that the latitude and longitude are stored in the geohash used by GeoModel.
+
+The url used to update a  batch of zipcode entities is:
+
+http://moveable-weather.appspot.com/locations_update?limit=LIMIT
+
+where LIMIT is the number of entities to update. By trial and error, I have determined that 100 is a good value for LIMIT, because anything larger tends to cause App Engine to time out. I have created a Makefile target, in the Makefile in the app folder, called "fill". To process update all the zipcode entities, I run the following, in a shell:
+
+{{{
+while (1):
+   make fill LIMIT=100
+}}}
+
+
+Leave this loop running for about an hour and eventually it will starting saying it is processing 0 entities, which is your way of knowing that it's done.
+
 
 GeoModel
 we load all the locations, using bulkloader
