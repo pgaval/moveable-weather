@@ -1,6 +1,28 @@
-#summary One-sentence summary of this page.
-
 = Introduction =
+
+The Google Weather API uses zip codes for it's lookup parameter, whereas Google Latitude delivers the data in terms of latitude and longitude. There are various web services, both free and commercial, that can map between these two, but the disadvantage of using an online service is that it's inevitably metered. Therefore, creating a datastore within your app is a nice way to go.
+
+To this purpose,  Moveable Weather uses the CivicSpace US ZIP Code Database, which is released under Creative Commons, and available at http://www.boutell.com/zipcodes/.
+
+However, this only gets us as far as mapping specific zipcodes to specific geographical coordinates. If we are to accept arbitrary US data, coming from Google Latitude, then we need a method for computing proximity.
+
+Along comes the GeoModel Python module to the rescue. Hoever, for GeoModel to do it's work, we need to load all are data into a "geohash". Specifically, we need to make our db object ZipCode, which holds our zip codes, inherit from GeoModel. That's why you'll see the following definition in models.py.
+
+{{{
+class ZipCode(GeoModel):
+  """A location-aware model for zip codes
+
+  """
+  zip = db.StringProperty(required=True)
+  city = db.StringProperty(required=True)
+  state = db.StringProperty(required=True)
+  latitude = db.FloatProperty(required=True)
+  longitude = db.FloatProperty(required=True)
+  has_location = db.IntegerProperty(required=True)
+  timezone =  db.IntegerProperty()
+  dst = db.IntegerProperty()
+}}}
+
 
 GeoModel
 we load all the locations, using bulkloader
