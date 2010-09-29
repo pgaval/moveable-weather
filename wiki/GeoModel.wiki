@@ -10,8 +10,9 @@ Now there's a publicly available csv file, called the [http://www.boutell.com/zi
 This is called a "proximity search", and is just what the [http://pypi.python.org/pypi/geomodel/0.2.0 GeoModule] Python module  was designed for. However, we need to massage our zip code data into a form where GeoModel can use it.
 
 All of the required step take place once, during setup. The steps are:
-* Define a ZipCode model that inherits from GeoModel
-* Use Google's bulkload facility to upload the csv file
+
+    * Define a ZipCode model that inherits from GeoModel
+    * Use Google's bulkload facility to upload the csv file
 
 
 However, this only gets us as far as mapping specific zipcodes to specific geographical coordinates. If we are to accept arbitrary US data, coming from Google Latitude, then we need a method for computing proximity.
