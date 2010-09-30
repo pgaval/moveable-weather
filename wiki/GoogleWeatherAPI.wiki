@@ -2,12 +2,8 @@
 
 = Introduction =
 
-The Google Weather API
+We use the Google Weather API in Moveable Weather, because it is simple, non-metered, and free.
+It provides a proof of concept of the location-based functionality in Moveable Weather. People desiring to branch off of or improve Moveable Weather may want to substitute in other web services.
 
+The data coming back from the Google Weather API is xml, and thus easy to parse.
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
