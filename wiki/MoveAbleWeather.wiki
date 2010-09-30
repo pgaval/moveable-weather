@@ -7,5 +7,5 @@ Add your content here.
 
 = Details =
 
-  * GeoModel
-  * BulkUpload
+  * [GeoModel The GeoModel module]
+  * [BulkUpload Bulk upload facility in Google App Engine]
