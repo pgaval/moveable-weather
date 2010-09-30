@@ -7,9 +7,10 @@ Add your content here.
 
 = Details =
 
-  * [GeoModel The GeoModel module]
+  * [GeoModel GeoModel module]
   * [BulkUpload Bulk upload facility in Google App Engine]
-  * [GoogleWeatherAPI the Google Weather API]
+  * [GoogleWeatherAPI Google Weather API]
   * [Authentication Authentication]
   * [ReverseGeoCoding Reverse geocoding]
   * [Tropo the Tropo voice interface]
+  * [Demo Demo]
