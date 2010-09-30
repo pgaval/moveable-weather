@@ -9,3 +9,7 @@ Add your content here.
 
   * [GeoModel The GeoModel module]
   * [BulkUpload Bulk upload facility in Google App Engine]
+  * [GoogleWeatherAPI the Google Weather API]
+  * [Authentication Authentication]
+  * [ReverseGeoCoding Reverse geocoding]
+  * [Tropo the Tropo voice interface]
