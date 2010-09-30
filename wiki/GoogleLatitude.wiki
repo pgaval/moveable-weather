@@ -1,13 +1,9 @@
-#summary One-sentence summary of this page.
+#summary Moveable Weather gets it's locational data, for users, from Google Latitude.
 
 = Introduction =
 
-Add your content here.
-
+The Google Latitude API, much like other Google services such as Google Contacts and Google Calendar, gives you the ability to authenticate users using OAuth. In Moveable Weather, the code for this resides in latitude.py and oauth.py.
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+When a user signs up over the web, a member object is created. The latitude_key and latitude_secret store the date that is used in subsequent login, to access the user's Latitude data.
