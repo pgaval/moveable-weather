@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Add your content here.
+The Google Weather API
 
 
 = Details =
