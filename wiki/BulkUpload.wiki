@@ -17,3 +17,20 @@ There is great power in the bulk upload facility, and along with this power, com
   * app/Makefile: contains some useful "make" targets for doing the uploading and configuration
 
 Once uploaded, the data needs to be massaged a bit further, before we can use it. We need the ability to do "proximity searches" on longitudes and latitudes, coming in from Google Latitude, that will find the appropriate zip codes. We accomplish by arranging for our ZipCode data model to inherit from GeoModel.
+
+{{{
+class ZipCode(GeoModel):
+  """A location-aware model for zip codes
+
+  """
+  zip = db.StringProperty(required=True)
+  city = db.StringProperty(required=True)
+  state = db.StringProperty(required=True)
+  latitude = db.FloatProperty(required=True)
+  longitude = db.FloatProperty(required=True)
+  has_location = db.IntegerProperty(required=True)
+  timezone =  db.IntegerProperty()
+  dst = db.IntegerProperty()
+
+
+}}}
