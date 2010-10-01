@@ -8,7 +8,7 @@ Moveable Weather is a voice enabled location based mashup, that uses Google's We
 = Details =
 
   * [GeoModel GeoModel module]
-  * [BulkUpload Bulk upload facility in Google App Engine]
+  * [BulkUpload App Engine Bulk Loader facility]
   * [GoogleWeatherAPI Google Weather API]
   * [Authentication Authentication]
   * [ReverseGeoCoding Reverse geocoding]
