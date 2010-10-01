@@ -24,9 +24,9 @@ class ZipCode(GeoModel):
 }}}
 
 
-Once this data is uploaded, it still needs to be indexed. This is done by calling the {{{update_location}}} method on each ZipCode data record.
+Once this data is uploaded, it still needs to be indexed. This is done by calling the `update_location` method on each ZipCode data record.
 
-It may seem like the straightforward approach is to define a function that simply loops through all the record in the data model, calling {{upload_location}}} on each one. But such an approach won't work, because App Engine has a restriction limiting each url invocation. 
+It may seem like the straightforward approach is to define a function that simply loops through all the record in the data model, calling `upload_location` on each one. But such an approach won't work, because App Engine has a restriction limiting each url invocation. 
 
 The workaround I have come up with for Moveable Weather is to define a GET method on a class UpdateLocations that updates a batch of locations, and then uses memcache to remember where it left off. I had to experiment a bit to determine what size batch it was happy with, but having done that, I just ran an infinite loop in the shell that repeately invoked this url, via a "make" target:
 
@@ -46,4 +46,3 @@ Here's the crucial call
                             geo.geotypes.Point(lat, lng),  # Or db.GeoPt
                             max_results=10,
                             max_distance=16000)  # Within 100 miles.
-
