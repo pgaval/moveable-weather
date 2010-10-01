@@ -2,10 +2,9 @@
 
 = Using Bulk Loader =
 
-Google's App Engine offers a powerful set of tools for bulk uploading data. We use it in Moveable Weather for uploading a freely-available CSV containing locational information about all U.S. zip codes.
+Google's App Engine offers a powerful set of tools for bulk loading data. We use it in Moveable Weather for uploading a [http://www.boutell.com/zipcodes/ freely-available CSV file] containing locational information about all U.S. zip codes.
 
-This is a great alternative to web based services for doing on-the-fly zip code resolution, because it obviates any worries we might have about bumping up against usage limits.
-
+This is a great alternative to web based services for doing on-the-fly zip code resolution, because it eliminates any worries we might have about bumping up against usage limits.
 
 
 = Details =
@@ -15,22 +14,3 @@ There is great power in the bulk upload facility, and along with this power, com
   * bulkloader.yaml: a configuration file needed by the bulk loader
   * zipcode.csv: comprises a database U.S zip codes, with their cities, states, latitudes and longitudes
   * app/Makefile: contains some useful "make" targets for doing the uploading and configuration
-
-Once uploaded, the data needs to be massaged a bit further, before we can use it. We need the ability to do "proximity searches" on longitudes and latitudes, coming in from Google Latitude, that will find the appropriate zip codes. We accomplish by arranging for our ZipCode data model to inherit from GeoModel.
-
-{{{
-class ZipCode(GeoModel):
-  """A location-aware model for zip codes
-
-  """
-  zip = db.StringProperty(required=True)
-  city = db.StringProperty(required=True)
-  state = db.StringProperty(required=True)
-  latitude = db.FloatProperty(required=True)
-  longitude = db.FloatProperty(required=True)
-  has_location = db.IntegerProperty(required=True)
-  timezone =  db.IntegerProperty()
-  dst = db.IntegerProperty()
-
-
-}}}
