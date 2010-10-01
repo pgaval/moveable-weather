@@ -1,13 +1,19 @@
-#summary One-sentence summary of this page.
+#summary Google App Engine utility for uploading a CSV file
 
-= Using Bulk Upload =
+= Using Bulk Loader =
 
-Add your content here.
+Google's App Engine offers a powerful set of tools for bulk uploading data. We use it in Moveable Weather for uploading a freely-available CSV containing locational information about all U.S. zip codes.
+
+This is a great alternative to web based services for doing on-the-fly zip code resolution, because it obviates any worries we might have about bumping up against usage limits.
+
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+There is great power in the bulk upload facility, and along with this power, comes complexity. Moveable Weather includes the following components, which you can use, to upload the data:
+
+  * bulkloader.yaml: a configuration file needed by the bulk loader
+  * zipcode.csv: comprises a database U.S zip codes, with their cities, states, latitudes and longitudes
+  * app/Makefile: contains some useful "make" targets for doing the uploading and configuration
+
+Once uploaded, the data needs to be massaged a bit further, before we can use it. We need the ability to do "proximity searches" on longitudes and latitudes, coming in from Google Latitude, that will find the appropriate zip codes. We accomplish by arranging for our ZipCode data model to inherit from GeoModel.
