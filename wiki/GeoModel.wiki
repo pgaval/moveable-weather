@@ -1,23 +1,10 @@
-Using the GeoModule package for indexing and querying geospatial data in App Engine.
+#summary Using the [GeoModel http://pypi.python.org/pypi/geomodel/0.2.0]  package for "indexing and querying geospatial data in App Engine".
 
 = Introduction =
 
-Moveable Weather gets information about a user's location, from Google Latitude. This info is in terms 
-of longitude and latitude. But we then need to map a particular point in space to a zip code, so we an feed it to the  [http://blog.programmableweb.com/2010/02/08/googles-secret-weather-api/ Google Weather API].
+Once we have uploaded our zip code CSV file to Moveable Weather, we need to arrange for this data to be indexed so we can do "proximity searches". Otherwise, we wouldn't have a way of associating geospatial information coming in from Google Latitude with actual zip codes.
 
-Now there's a publicly available csv file, called the [http://www.boutell.com/zipcodes/ CivicSpace US ZIP Code Database] which is released under Creative Commons, and can help us out here. However, each row of data in this csv file tells you the exact point, in terms of latitude and longitude, that a zip code is centered around. However, it remains to compute, for any latitude and longitude pair coming from a user, which zip code is in the closest proximity.
-
-This is called a "proximity search", and is just what the [http://pypi.python.org/pypi/geomodel/0.2.0 GeoModule] Python module  was designed for. However, we need to massage our zip code data into a form where GeoModel can use it.
-
-All of the required step take place once, during setup. The steps are:
-
-    * Define a ZipCode model that inherits from GeoModel
-    * Use Google's bulkload facility to upload the csv file
-
-
-However, this only gets us as far as mapping specific zipcodes to specific geographical coordinates. If we are to accept arbitrary US data, coming from Google Latitude, then we need a method for computing proximity.
-
-Along comes the GeoModel Python module to the rescue. Hoever, for GeoModel to do it's work, we need to load all are data into a "geohash". Specifically, we need to make our db object ZipCode, which holds our zip codes, inherit from GeoModel. That's why you'll see the following definition in models.py.
+The first step is to define a data model, called ZipCode, which conforms to the data in the CSV file, but which also inherits from GeoModel.
 
 {{{
 class ZipCode(GeoModel):
@@ -32,41 +19,25 @@ class ZipCode(GeoModel):
   has_location = db.IntegerProperty(required=True)
   timezone =  db.IntegerProperty()
   dst = db.IntegerProperty()
+
+
 }}}
 
-However, there's one more step in preparing the data, after bulkloading it into the ZipCode datastore. We need to loop through each row in the ZipCode table, calling update_location on it. This is the function that ensures that the latitude and longitude are stored in the geohash used by GeoModel.
 
-The url used to update a  batch of zipcode entities is:
+Once this data is uploaded, it still needs to be indexed. This is done by calling the {{{update_location}}} method on each ZipCode data record.
 
-http://moveable-weather.appspot.com/locations_update?limit=LIMIT
+It may seem like the straightforward approach is to define a function that simply loops through all the record in the data model, calling {{upload_location}}} on each one. But such an approach won't work, because App Engine has a restriction limiting each url invocation. 
 
-where LIMIT is the number of entities to update. By trial and error, I have determined that 100 is a good value for LIMIT, because anything larger tends to cause App Engine to time out. I have created a Makefile target, in the Makefile in the app folder, called "fill". To process update all the zipcode entities, I run the following, in a shell:
+The workaround I have come up with for Moveable Weather is to define a GET method on a class UpdateLocations that updates a batch of locations, and then uses memcache to remember where it left off. I had to experiment a bit to determine what size batch it was happy with, but having done that, I just ran an infinite loop in the shell that repeately invoked this url, via a "make" target:
 
 {{{
-while (1):
+while (1)
    make fill LIMIT=100
 }}}
 
-
-Leave this loop running for about an hour and eventually it will starting saying it is processing 0 entities, which is your way of knowing that it's done.
-
-
-GeoModel
-we load all the locations, using bulkloader
-then we iterate through the locations, calling update_location
-      """Syncs underlying geocell properties with the entity's location.
-
-    Updates the underlying geocell properties of the entity to match the
-    entity's location property. A put() must occur after this call to save
-    the changes to App Engine."""
+The GET method in UpdateLocations reports on its progress, and eventually reports that it isn't changing any records. At that point, you can just break out of the loop, in the shell.
 
 
-geomodel.py
-"""Defines the GeoModel class for running basic geospatial queries on
-single-point geographic entities in Google App Engine.
-
-TODO(romannurik): document how bounding box and proximity queries work.
-"""
 
 Here's the crucial call
 
@@ -76,12 +47,3 @@ Here's the crucial call
                             max_results=10,
                             max_distance=16000)  # Within 100 miles.
 
-
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
