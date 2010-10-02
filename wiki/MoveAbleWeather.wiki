@@ -1,10 +1,7 @@
 #summary Top level introduction to Moveable Weather
 
 = Introduction =
-
 Moveable Weather is a voice enabled location based mashup, that uses Google's Weather API, to read you your local weather. Key components of the application, which runs on Google's App Engine, are described below.
-
-
 = Details =
 
   * [GeoModel GeoModel module]
