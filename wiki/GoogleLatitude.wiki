@@ -1,9 +1,21 @@
-#summary Moveable Weather gets it's locational data, for users, from Google Latitude.
+#summary Moveable Weather gets it's locational data, for users, from Google Latitude, by using the Google Latitude API.
 
 = Introduction =
 
-The Google Latitude API, much like other Google services such as Google Contacts and Google Calendar, gives you the ability to authenticate users using OAuth. In Moveable Weather, the code for this resides in latitude.py and oauth.py.
+Simply put, we use the Google Latitude API to get our current location. We leave the details of how that location is determined to Google Latitude itself. Typically, if the user is carrying a smart phone, like an iPhone, an Android device, or a BlackBerry, the Google Latitude is updating the user's location continually.  But it doesn't really matter, and it makes a nice demo to show how a user can update their location by moving their avatar around a Google Map from their iGoogle home page, and still reliably update the Latitude location.
+
+The only call to Google Latitude we really need to make is
+{{{
+        result = latitude.Latitude(client).get_current_location()
+}}}
+
+However, this one line is deceptively simple, because the _client_ object encapsulates the fact that a user has authenticated Moveable Weather to acccess the Latitude data. For that authentication, we need OAuth.
 
 = Details =
 
-When a user signs up over the web, a member object is created. The latitude_key and latitude_secret store the date that is used in subsequent login, to access the user's Latitude data.
+Thanks to some helpful engineers at Google, we really don't have to concern ourselves much with the intricacies of of the "oauth dance". This is because they have provided a very [https://groups.google.com/group/google-latitude-api/browse_thread/thread/2556e289d98def0c/31ca0d93309eae14?lnk=gst&q=ping#31ca0d93309eae14 helpful demo], that contains all the code we need. In Moveable Weather, this code is embodied in the following files:
+{{{
+[http://code.google.com/p/moveable-weather/source/browse/trunk/app/oauth.py oauth.py]
+[http://code.google.com/p/moveable-weather/source/browse/trunk/app/oauth_appengine.py oauth_appengine.py]
+[http://code.google.com/p/moveable-weather/source/browse/trunk/app/oauth_webapp.py oauth_webapp.py]
+}}}
