@@ -2,16 +2,11 @@
 
 = Introduction =
 
-To setup Moveable Weather, you'll have to setup the following major components:
+To setup Moveable Weather, you'll have to set up the following major components:
 
-  # Create a new  app, using  [Google App Engine]
-  # [FirstTimeEdit Download and edit the source files]
-  # 
+  # Download and customize the source files.
+  # Create and setup  new Tropo app.
+  # Create a new Appengine App, and register it's domain.
+  # Finish customizing the Python source code
+  # Bulk load zip code data
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
