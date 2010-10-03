@@ -1,0 +1,6 @@
+#summary Setup your Tropo app.
+
+  # Go to the [http://tropo.com Tropo home page]
+  # Signup for a free account and create a new app.
+  # For the entry point, use `http://MY_APPP.spot.com` where `MY_APP` is the name of your App Engine appp.
+  # Tell Tropo to assign a phone number to your app, and note it down.
