@@ -1,0 +1,32 @@
+#summary Register the domain of your App Engine app.
+
+= Introduction =
+
+In order for OAuth to work, you need to register the domain 
+of your App Engine app with Google.
+
+
+
+= Details =
+
+Perform the following steps.
+
+   #  Go to https://www.google.com/accounts/ManageDomains
+   #  Choose the "upload an html file" method
+      * Google will offer you file with a name like `googlead47db9711b4789c.html` for download
+      * One way to verify this url is to set it up as an endpoint of your App Engine app. You can do this by
+globally substituting in the name of your special download file for `googlead47db9711b4789c.html` in main.py
+      * Update your App Engine app, using the App Engine launcher, or by issuing the command:
+           {{{
+               appcfg.py update .
+          }}}
+  from your app directory.
+
+       * Now visit http://MY_APP.appspot.com/googlead47db9711b4789c.html
+       * Press the Verify button.   
+       * Google gives you back the consumser secret, something like:
+             `wiExtkNLdsYsKwiExtkNLdsYsK`
+         
+       * Copy this down somewhere
+       * When Google  ask you for the target url path prefix, use
+                /_oauth_callback
