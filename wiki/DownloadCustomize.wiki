@@ -3,12 +3,10 @@
 = Introduction =
 
    # [http://code.google.com/p/moveable-weather/source/checkout Download source files.]
-   # 
+   # Go to Google App Engine, and create a new app called MY_APP
+   # In app/globals.py define substitute the name of your app in the line
+{{{
+  APP_NAME = "your app id"
 
+}}}
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
