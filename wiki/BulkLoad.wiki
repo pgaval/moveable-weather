@@ -11,11 +11,9 @@ The reason proximity searches are necessary is that each zip code in the databas
 Here are the steps to use bulk upload to upload the zip code data. This will cause all your zip code today to be uploaded, and may take an hour or so.
 
   # From the  `app` directory, issue the command:
-{{{
+    {{{
      make upload
-}}}
-   
-
+    }}}
   # Next, we need to make sure the `upload_location` method gets called on each of our newly minted ZipCode objects. What we want to do is loop through all the items in the ZipCode data store, but doing so in one go will cause App Engine to time out. So the solution we adopt here is to invoke a custom GET method that will update the zip codes in batches, and set it up so that it is careful to save its place at the end of each call. Fortunately, App Engine supports _cursors_ for just this purpose. 
   # All that remains is to invoke this GET method, repeatedly, until all zip code items are processed. So in a UNIX shell, from the _app_ directory, type in the following loop, on the fly. Let this loop run until it starts reporting that 0 records have been changed:
     {{{
