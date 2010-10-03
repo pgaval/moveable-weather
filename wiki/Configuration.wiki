@@ -1,0 +1,17 @@
+#summary Setting up Moveable Weather
+
+= Introduction =
+
+To setup Moveable Weather, you'll have to setup the following major components:
+
+  # Create a new  app, using  [Google App Engine]
+  # [FirstTimeEdit Download and edit the source files]
+  # 
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
