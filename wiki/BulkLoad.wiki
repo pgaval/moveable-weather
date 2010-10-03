@@ -11,15 +11,15 @@ The reason proximity searches are necessary is that each zip code in the databas
 Here are the steps to use bulk upload to upload the zip code data.
 
   # From the  `app` directory, issue the command:
-   {{{
+{{{
      make upload
-}}
+}}}
    This will cause all your zip code today to be uploaded, and may take an hour or so.
 
   # There is also a _make_ target called _fill_, which you can use to call `upload_location` on batches of zip codes. You'll have to invoke this url in batches of 100 or so, so that App Engine doesn't time out
   # In the shell, perform the following loop, on the fly, until the output indicates that rows of data are no longer being processed:
 
-   {{{
+ {{{
         while (1)
             make fill LIMIT=100
-   }}}
+ }}}
