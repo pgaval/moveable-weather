@@ -5,8 +5,6 @@
 
 Google's App Engine offers a powerful set of tools for bulk loading data. We use it in Moveable Weather for uploading a [http://www.boutell.com/zipcodes/ freely-available CSV file] containing locational information about all U.S. zip codes.
 
-This is a great alternative to web based services for doing on-the-fly zip code resolution, because it eliminates any worries we might have about bumping up against usage limits.
-
 
 = Details =
 
