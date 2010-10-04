@@ -3,7 +3,7 @@
 
 = Introduction =
 
-Simply put, we use the Google Latitude API to get our current location. We leave the details of how that location is determined to Google Latitude itself. Typically, if the user is carrying a smart phone, like an iPhone, an Android device, or a BlackBerry, the Google Latitude is updating the user's location continually.  But it doesn't really matter, and it makes a nice demo to show how a user can update their location by moving their avatar around a Google Map from their iGoogle home page, and still reliably update the Latitude location.
+Typically, if the user is carrying a smart phone, like an iPhone, an Android device, or a BlackBerry, Google Latitude is updating the user's location continually.  Alternatively, a user can update their location by moving their avatar around a Google Map from their iGoogle home page, and still reliably update the Latitude location.
 
 The only call to Google Latitude we really need to make is
 {{{
