@@ -1,3 +1,4 @@
+# Download and Customize the Source Files
 Pull the source code from http://code.google.com/p/moveable-weather/
 Go to Google App Engine, and create a new app called MY_APP
 Edit ./app/my-globals.py
@@ -6,12 +7,23 @@ Edit ./app/my-globals.py
      PRETTY_APP_NAME="your app name"
      PRETTY_APP_PHONE="Tropo number that starts your app"
 
-Go to tropo.com, and create a new app, called TROPO_APP
-
 Edit ./app/Makefile
      Change value of APP in Makefile to what you used for MY_APP, above
 
-Register the domain of your App Engine app for oauth
+# Create a new Tropo App
+
+Go to tropo.com, and create a new app, called TROPO_APP
+
+
+Setting Up the Tropo Interface
+   Sign up for Tropo
+   Create an application, called MY_TROPO_APP
+   Set http://MY_APP.appspot.com/tropo_multi_weather.py as the start point
+
+
+
+# As a prerequisite for using OAuth, Register the domain of your app
+
      Go to https://www.google.com/accounts/ManageDomains
        Use the "upload an html file" method
           First, Google gives a file called something like 
@@ -36,8 +48,22 @@ Register the domain of your App Engine app for oauth
           When Google  ask you for the target url path prefix, use
                 /_oauth_callback
        
+# Finish customizing the Python Source Files
+
           Now you're ready to fill out the contents of the variable in 
 	       app/my_globals.py
+
+   in app/my_globals.py set the value of PRETTY_APP_PHONE, which is the 
+       phone number Tropo assigns to your app
+
+Edit ./app/my-globals.py
+     MY_OAUTHCONSUMER_SECRET = "YOUR OAUTH_CONSUMER_SECRET"
+     APP_NAME = "your app name id"
+     PRETTY_APP_NAME="your app name"
+     PRETTY_APP_PHONE="Tropo number that starts your app"
+
+
+# Bulk upload zip code data
 
 Bulk upload all the Zip Code data to your App Engine app
    First, edit ./app/Makefile, setting APP to MY_APP
@@ -50,10 +76,3 @@ Bulk upload all the Zip Code data to your App Engine app
 
    Let this run until it starts coming back, saying that it's processing 0 zip codes
 
-
-Setting Up the Tropo Interface
-   Sign up for Tropo
-   Create an application, called MY_TROPO_APP
-   Set http://MY_APP.appspot.com/tropo_multi_weather.py as the start point
-   in app/my_globals.py set the value of PRETTY_APP_PHONE, which is the 
-       phone number Tropo assigns to your app
