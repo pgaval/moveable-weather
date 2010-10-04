@@ -3,7 +3,7 @@
 
 = Introduction =
 
-Typically, if the user is carrying a smart phone, like an iPhone, an Android device, or a Blackberry, Google Latitude is updating the user's location continually.  Alternatively, a user can update their location by moving their avatar around a Google Map from their iGoogle home page, and still reliably update the Latitude location.
+If the user is carrying a smart phone, like an iPhone, an Android device, or a Blackberry, Google Latitude is updating the user's location continually.  Alternatively, a user can update their location by moving their avatar around a Google Map from their iGoogle home page, and still reliably update the Latitude location.
 
 The only call to Google Latitude we really need to make is
 {{{
