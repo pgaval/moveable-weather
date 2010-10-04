@@ -1,13 +1,5 @@
-Tropo provides the voice UI.
+#summary Voxeo's Tropo API gives us the tools we need to supply the voice interface for Moveable Weather.
 
 = Introduction =
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+The Tropo Web API is a JSON interface to Voxeo's voice features. In recent months, libraries in various languages have been added, as a layer that sits above the JSON. Among these is the Tropo Web API for Python, and this is what we use in the implementation of Moveable Weather.
