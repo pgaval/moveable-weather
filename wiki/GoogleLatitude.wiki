@@ -7,7 +7,7 @@ If the user is carrying a smart phone, like an iPhone, an Android device, or a B
 
 The only call to Google Latitude we really need to make is
 {{{
-        result = latitude.Latitude(client).get_current_location()
+result = latitude.Latitude(client).get_current_location()
 }}}
 
 However, this one line is deceptively simple, because the _client_ object encapsulates the fact that a user has authenticated Moveable Weather to acccess the Latitude data. For that authentication, we need OAuth.
