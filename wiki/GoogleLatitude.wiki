@@ -14,7 +14,7 @@ However, this one line is deceptively simple, because the _client_ object encaps
 
 = Details =
 
-Thanks to some helpful engineers at Google, we really don't have to concern ourselves much with the intricacies of of the "oauth dance". This is because they have provided a very [https://groups.google.com/group/google-latitude-api/browse_thread/thread/2556e289d98def0c/31ca0d93309eae14?lnk=gst&q=ping#31ca0d93309eae14 helpful demo], that contains all the code we need. In Moveable Weather, this code is embodied in the following files:
+We really don't have to concern ourselves much with the intricacies of of the "oauth dance", because engineers at Google have provided a very [https://groups.google.com/group/google-latitude-api/browse_thread/thread/2556e289d98def0c/31ca0d93309eae14?lnk=gst&q=ping#31ca0d93309eae14 helpful demo], containing the necessary Python code. In Moveable Weather, this code is embodied here:
 
   * [http://code.google.com/p/moveable-weather/source/browse/trunk/app/oauth.py oauth.py]
   * [http://code.google.com/p/moveable-weather/source/browse/trunk/app/oauth_appengine.py oauth_appengine.py]
