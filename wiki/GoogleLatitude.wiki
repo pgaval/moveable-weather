@@ -3,9 +3,9 @@
 
 = Introduction =
 
-If the user is carrying a smart phone, like an iPhone, an Android device, or a Blackberry, Google Latitude is updating his location continually.  Alternatively, he can update his location by moving his avatar around a Google Map from his iGoogle home page.
+If the user is carrying a smart phone, like an iPhone, an Android device, or a Blackberry, Google Latitude can continually update his location.  Alternatively, the user can simulate this movement by moving his avatar around a Google Map from the  iGoogle home page.
 
-The only call to Google Latitude we really need to make is
+The crucial call to Google Latitude is
 {{{
 result = latitude.Latitude(client).get_current_location()
 }}}
