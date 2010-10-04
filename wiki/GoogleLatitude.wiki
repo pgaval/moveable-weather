@@ -1,4 +1,5 @@
 #summary Moveable Weather gets it's locational data, for users, from Google Latitude, by using the Google Latitude API.
+#labels Featured
 
 = Introduction =
 
