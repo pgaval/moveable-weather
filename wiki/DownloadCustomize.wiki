@@ -4,7 +4,7 @@
 
    # [http://code.google.com/p/moveable-weather/source/checkout Download source files.]
    # Go to Google App Engine, and create a new app called MY_APP
-   # In `app/globals.py` define substitute the name of your app in the line
+   # In `app/globals.py` substitute the name of your app in the line
 {{{
   APP_NAME = "your app id"
 
