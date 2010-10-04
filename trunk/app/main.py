@@ -45,6 +45,7 @@ from google.appengine.api import mail
 import string
 
 OAUTH_CALLBACK_PATH = '/oauth_callback'
+GOOGLE_VERIFY_PATH = "/%s" % GOOGLE_VERIFY_FILE
 ROOT = os.path.dirname(__file__)
 GOOGLE_WEATHER_API_URL = "http://www.google.com/ig/api"
 
@@ -147,7 +148,7 @@ oauth_consumer = oauth.OAuthConsumer(
 
 class GoogleVerifyDomain(webapp.RequestHandler):
     def get(self):
-        self.response.out.write("""google-site-verification: googlead47db9711b4789c.html""")
+        self.response.out.write("""google-site-verification: %s """ % GOOGLE_VERIFY_FILE)
 
 class Main(webapp.RequestHandler):
     def get(self):
@@ -578,21 +579,26 @@ class HelloTropo(webapp.RequestHandler):
 
 class TropoCheckPassword(webapp.RequestHandler):
     def post(self):
+        """Check the user's 8-digit password. This password was assigned
+        when they first authenticated. If we find a match in the datastore,
+        we associate the incoming phone number with the member account that 
+        was retrieved. """
         cellnumber = self.request.get('cellnumber')
+
+        # This is how we get at the result was was posted to Tropo.
         json = self.request.body
         result = tropo.Result(json)
         password_attempt = result.getValue()
-        logging.info ("Password attempt is: %s" % password_attempt)
+
         try:
             q =  model.Member.all().filter('passw =', password_attempt)
             members = q.fetch(1)
             member = members[0]
         except:
-            logging.info ("I came up with nothing")
             member = None
 
+        #  #1. Create a Tropo object we will use to post back to the Tropo engine.
         trop = tropo.Tropo()
-
         if (member):
             member.cellnumber = cellnumber
             member.put()
@@ -602,18 +608,16 @@ class TropoCheckPassword(webapp.RequestHandler):
             choices = tropo.Choices("[1 digits]").obj
             trop.ask(choices, 
                       say="Press any key to try again.", 
-                      attempts=3, bargein=True, name="zip", timeout=5, voice="dave")
+                      attempts=3, bargein=True, name="confirm", timeout=5, voice="dave")
+            # Redirect back to try again.
             trop.on(event="continue", 
                      next="/tropo_multi_weather.py?id=%s" % cellnumber,
                      say="Ok, good luck.")
 
-            # /tropo_multi_weather.py
+        # Render all the code, from #1. to here, to a json object.
         json = trop.RenderJson()
-        logging.info ("Json result: %s " % json)
+        # Post the json code back out to the Tropo engine.
         self.response.out.write(json)
-
-
-
 
 
 class SetMyOauth(webapp.RequestHandler):
@@ -635,6 +639,6 @@ if __name__ == '__main__':
         ('/set_my_oauth', SetMyOauth),
         ('/delete_member', DeleteMember),
         ('/locations_update', UpdateLocations),
-        ('/googlead47db9711b4789c.html', GoogleVerifyDomain),
+        (GOOGLE_VERIFY_PATH, GoogleVerifyDomain),
         (OAUTH_CALLBACK_PATH, LatitudeOAuthCallbackHandler)
     ]))
