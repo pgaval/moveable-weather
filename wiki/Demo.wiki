@@ -1,4 +1,4 @@
-#summary Try out the [http://moveable-weather.appspot.com Moveable Weather] demo.
+#summary Try out the [http://blog.tropo.com/?p=1336&preview=true Moveable Weather] demo.
 
 = Introduction =
 
