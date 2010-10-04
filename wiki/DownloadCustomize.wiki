@@ -7,5 +7,5 @@
    # In `app/globals.py` substitute the name of your app in the line
 {{{
   APP_NAME = "your app id"
-
+  PRETTY_APP_NAME="your app name"
 }}}
