@@ -1,4 +1,5 @@
 #summary Using the [GeoModel http://pypi.python.org/pypi/geomodel/0.2.0]  package for "indexing and querying geospatial data in App Engine".
+#labels Featured
 
 = Introduction =
 
