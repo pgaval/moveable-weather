@@ -1,6 +1,0 @@
-#summary Moveable Weather uses the [http://www.boutell.com/zipcodes/ CivicSpace US ZIP Code Database]
-#labels Featured
-
-= Introduction =
-
-We have edited this csv file slightly, by adding an extra field at the end of each line. This field is used to keep of track of our progress as we load the data into a geohash.
