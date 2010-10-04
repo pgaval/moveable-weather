@@ -1,4 +1,5 @@
 #summary Google App Engine utility for uploading a CSV file
+#labels Featured
 
 = Using Bulk Loader =
 
