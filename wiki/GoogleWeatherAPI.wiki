@@ -2,7 +2,12 @@
 
 = Introduction =
 
-We use the Google Weather API in Moveable Weather, because it is simple, non-metered, and free.
+We use the [http://blog.programmableweb.com/2010/02/08/googles-secret-weather-api/ Google Weather API] in Moveable Weather, because it is simple, non-metered, and free. The API can accept urls using place names or Zip Codes:
+
+  # http://www.google.com/ig/api?weather=Mountain+View
+  # http://www.google.com/ig/api?weather=03801
+
+Here are some sample Goog
 It provides a proof of concept of the location-based functionality in Moveable Weather. People desiring to branch off of or improve Moveable Weather may want to substitute in other web services.
 
 The data coming back from the Google Weather API is xml, and thus easy to parse. We parse this xml into a Python dictionary, which is easy to pass around. The voice interface picks out items from this dictionary, and then reports the weather like this:
