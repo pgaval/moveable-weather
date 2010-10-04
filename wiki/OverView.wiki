@@ -2,7 +2,7 @@
 = Process Flow =
 
   # Users signup by going to http://moveable-weather.appspot.com
-  # They are guided through the "oauth dance", to authenticated Google Latitude to share their location data wit this app
+  # They are guided through the [http://code.google.com/apis/gdata/articles/oauth.html oauth dance], for Google Latitude
   # They are issued an 8 digit password that is unique to their member account on Moveable Weather
   # They call the Moveable Weather access number and are prompted to enter their password
   # Each subsequent time they call
