@@ -2,4 +2,4 @@
 
 = Introduction =
 
-Read about the demo on the [http://blog/tropo.com Tropo Blog].
+Read about the demo on the [http://blog.tropo.com Tropo Blog].
