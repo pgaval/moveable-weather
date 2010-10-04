@@ -10,11 +10,3 @@
 
 Note:
    For demo purposes, they can "travel to a new location" by moving their avatar to a new location on the map, inside the Google Latitude gadget on their iGoogle home page.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
