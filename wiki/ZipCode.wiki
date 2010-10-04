@@ -3,12 +3,4 @@
 
 = Introduction =
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+We have edited this csv file slightly, by adding an extra field at the end of each line. This field is used to keep of track of our progress as we load the data into a geohash.
