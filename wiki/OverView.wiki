@@ -1,13 +1,13 @@
 #labels Featured
 = Process Flow =
 
-  # Users signup by going to http://moveable-weather.appspot.com
-  # They are guided through the [http://code.google.com/apis/gdata/articles/oauth.html oauth dance], for Google Latitude
-  # They are issued an 8 digit password that is unique to their member account on Moveable Weather
-  # They call the Moveable Weather access number and are prompted to enter their password
-  # Each subsequent time they call
-    # Based on their Google Latitude current location, they will be read the local weather
-    # The can then "travel to a new location", and hit any key, to again be read the weather, or they can hang up
+  # Users sign up by going to http://moveable-weather.appspot.com.
+  # They are guided through the [http://code.google.com/apis/gdata/articles/oauth.html oauth dance], for Google Latitude.
+  # They are issued an 8 digit password.
+  # They call the Moveable Weather access number and are prompted to enter their password.
+  # Each subsequent time they call, based on their Google Latitude current location,
+    #  they will be read the local weather
+    # The can then "*travel to a new location", and hit any key, to again be read the weather, or they can hang up
 
-Note:
+*Note:
    For demo purposes, they can "travel to a new location" by moving their avatar to a new location on the map, inside the Google Latitude gadget on their iGoogle home page.
