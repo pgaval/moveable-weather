@@ -3,9 +3,7 @@
 = Introduction =
 
 In order for OAuth to work, you need to register the domain 
-of your App Engine app with Google.
-
-
+of your App Engine app with Google. This is necessary because users will be entrusting Moveable Weather with their Latitude data. Their are several ways to accomplish this registration, but we outline one technique below.
 
 = Details =
 
