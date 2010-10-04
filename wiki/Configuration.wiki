@@ -1,4 +1,5 @@
 #summary Setting up Moveable Weather
+#labels Featured
 
 = Introduction =
 
