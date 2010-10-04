@@ -1,4 +1,5 @@
 #summary A simple "unofficial" weather UI.
+#labels Featured
 
 = Introduction =
 
