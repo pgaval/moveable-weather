@@ -1,4 +1,5 @@
 #summary Try out the Moveable Weather demo.
+#labels Featured
 
 = Introduction =
 
