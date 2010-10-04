@@ -10,4 +10,4 @@
     # The can then "*travel to a new location", and hit any key, to again be read the weather, or they can hang up
 
 *Note:
-   For demo purposes, they can "travel to a new location" by moving their avatar to a new location on the map, inside the Google Latitude gadget on their iGoogle home page.
+   For demo purposes, they can "travel to a new location" by moving their avatar to a new location on the map, inside the Google Latitude gadget on their [http://m.google.com/latitude?dc=lato iGoogle home page].
