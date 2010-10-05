@@ -45,7 +45,7 @@ from google.appengine.api import mail
 import string
 
 OAUTH_CALLBACK_PATH = '/oauth_callback'
-GOOGLE_VERIFY_PATH = "/%s" % GOOGLE_VERIFY_FILE
+GOOGLE_VERIFY_PATH = "/%s" % my_globals.GOOGLE_VERIFY_FILE
 ROOT = os.path.dirname(__file__)
 GOOGLE_WEATHER_API_URL = "http://www.google.com/ig/api"
 
@@ -236,9 +236,12 @@ class LatitudeOAuthCallbackHandler(webapp.RequestHandler):
 
         # Request the user's location
         client = latitude.LatitudeOAuthClient(oauth_consumer, access_token)
-        result = latitude.Latitude(client).get_current_location()
-        data = simplejson.loads(result.content)['data']
-        loc = db.GeoPt(data['latitude'], data['longitude'])
+	try:
+            result = latitude.Latitude(client).get_current_location()
+            data = simplejson.loads(result.content)['data']
+            loc = db.GeoPt(data['latitude'], data['longitude'])
+        except:
+            loc = db.GeoPt(40.0, -100.0)
             # Store a new Member object, including the user's current location.
         user =  users.get_current_user()
         their_email = user.email()
@@ -409,7 +412,7 @@ class WeatherClass(webapp.RequestHandler):
                             model.ZipCode.all(),  # Rich query!
                             geo.geotypes.Point(lat, lng),  # Or db.GeoPt
                             max_results=10,
-                            max_distance=16000)  # Within 100 miles.
+                            max_distance=64000)  # Within 100 miles.
 
       closest_zip_record = ""
       for zip_record in zip_records:
