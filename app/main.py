@@ -186,7 +186,11 @@ class Main(webapp.RequestHandler):
 
 
                 now = datetime.datetime.utcnow()
-                weather_dict = w.get_weather(member1,now)
+                try:
+                    weather_dict = w.get_weather(member1,now)
+                except:
+                    self.response.out.write("There was a problem retrieving the weather.")
+                    exit()
 		if (not weather_dict):
 		    self.response.out.write("Sorry, no weather here")
                 else:
@@ -359,15 +363,17 @@ class WeatherClass(webapp.RequestHandler):
     def tropo_report_weather(self, member, continuously):
         # w = WeatherClass()
         now = datetime.datetime.utcnow()
-        weather_dict = self.get_weather(member,now)
+        try:
+            weather_dict = self.get_weather(member,now)
+            
+        except:
+            trop = tropo.Tropo()
+            logging.info ("No weather here")
+            trop.say ("There was a problem retrieving the weather")
         if (not weather_dict):
             trop = tropo.Tropo()
             logging.info ("No weather here")
             trop.say ("Sorry, this place doesn't have any weather")
-            json = trop.RenderJson()
-            return json
-
-
         else:
             condition = weather_dict['condition']
             temp_f = weather_dict['temp_f']
@@ -389,20 +395,20 @@ class WeatherClass(webapp.RequestHandler):
             logging.info ("%s,%s. Weather condition: %s. Temperature: %s.  %s." % (city, state1, condition, temp_f, wind))
             trop.say ("%s,%s. Weather condition: %s. Temperature: %s.  Wind: %s." % (city, state1, condition, temp_f, wind))
 
-            if (continuously):
-                cellnumber = member.cellnumber
-                choices = tropo.Choices("[1 digits]").obj
+        if (continuously):
+            cellnumber = member.cellnumber
+            choices = tropo.Choices("[1 digits]").obj
 
-                trop.ask(choices, 
-                          say="Press any key when you want more weather.", 
-                          attempts=3, bargein=True, name="zip", timeout=5, voice="dave")
-
-                trop.on(event="continue", 
+            trop.ask(choices, 
+                     say="Press any key when you want more weather.", 
+                     attempts=3, bargein=True, name="zip", timeout=5, voice="dave")
+            
+            trop.on(event="continue", 
                          next="/tropo_multi_weather_continue.py?id=%s" % cellnumber,
                          say="Please hold.")
-            json = trop.RenderJson()
-            logging.info ("tropo_report_weather json: %s" % json)
-            return json
+        json = trop.RenderJson()
+        logging.info ("tropo_report_weather json: %s" % json)
+        return json
 
     def lookup_coords (self, lat, lng):
         # Loop through items in the db. Return the item
