@@ -13,7 +13,7 @@
 # limitations under the License.
 
 application: moveable-weather
-version: 1
+version: 2
 runtime: python
 api_version: 1
 
@@ -33,6 +33,12 @@ handlers:
 - url: /tropo_multi_weather_continue.py
   script: main.py
 
+- url: /tropo_multi_tides.py
+  script: main.py
+
+- url: /tropo_multi_tides_continue.py
+  script: main.py
+
 - url: /delete_member
   script: main.py
 
@@ -47,6 +53,12 @@ handlers:
 
 
 - url: /locations_update
+  script: main.py
+
+- url: /port_locations_update
+  script: main.py
+
+- url: /clean_ports
   script: main.py
 
 - url: /locations_check

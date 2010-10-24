@@ -481,20 +481,6 @@ class Result(object):
         return dict['interpretation']
 
 
-class SessionNew(object):
-    """
-    Session is the payload sent as an HTTP POST to your web application when a new session arrives. 
-    (See https://www.tropo.com/docs/webapi/session.htm)
-    """
-    def __init__(self, session_json):
-        logging.info ("POST data: %s" % session_json)
-        session_data = jsonlib.loads(session_json)
-        session_dict = session_data['session']
-	# "from" must be a reserved word, because it raises an error
-	fromm = session_dict['from']
-	id = session_dict['from']['id']
-	setattr(self,'id',id)
-
 class Session(object):
     """
     Session is the payload sent as an HTTP POST to your web application when a new session arrives. 
@@ -507,7 +493,10 @@ class Session(object):
         for key in session_dict:
             val = session_dict[key]
             logging.info ("key: %s val: %s" % (key, val))
-            setattr(self, key, val)
+            if key == "from":
+                setattr(self, "fromaddress", val) 
+            else:
+                setattr(self, key, val)
         setattr(self, 'dict', session_dict)
 
 class Tropo(object):
@@ -673,4 +662,5 @@ if __name__ == '__main__':
     
 
 """
+
 
