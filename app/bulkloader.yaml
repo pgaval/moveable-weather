@@ -70,4 +70,36 @@ transformers:
       import_transform: int
       # Type: String Stats: 47 properties of this type in this kind.
 
+- kind: Port
+  connector: csv
+
+  # post_import_function: transies.post_import_zipcode
+  property_map:
+    - property: __key__
+      external_name: key
+      export_transform: transform.key_id_or_name_as_string
+
+    - property: port
+      external_name: port
+      # Type: String Stats: 47 properties of this type in this kind.
+
+    - property: has_location
+      import_transform: int
+      external_name: has_location
+      # Type: String Stats: 47 properties of this type in this kind.
+
+    - property: place
+      external_name: place
+      # Type: String Stats: 47 properties of this type in this kind.
+
+    - property: latitude
+      import_transform: float
+      external_name: latitude
+      # Type: String Stats: 47 properties of this type in this kind.
+
+    - property: longitude
+      external_name: longitude
+      import_transform: float
+      # Type: String Stats: 47 properties of this type in this kind.
+
 

@@ -137,3 +137,14 @@ class ZipCode(GeoModel):
   timezone =  db.IntegerProperty()
   dst = db.IntegerProperty()
 
+class Port(GeoModel):
+  """A location-aware model for coastal Ports
+
+  """
+  port = db.StringProperty(required=True)
+  place = db.StringProperty(required=True)
+  latitude = db.FloatProperty(required=True)
+  longitude = db.FloatProperty(required=True)
+  has_location = db.IntegerProperty(required=True)
+  good_data =  db.IntegerProperty(required=False)
+  cleaned =  db.IntegerProperty(required=False)
