@@ -111,7 +111,7 @@ class Main(webapp.RequestHandler):
                     loc = weather_dict['loc']
                     zip_code = weather_dict['zip_code']
 
-                    self.render('templates/show_location.html', location=loc, postalCode=zip_code, temp_f=temp_f, condition=condition, wind_condition=wind_condition, city=city, state=state, vars=self.vars, pretty_app_name=my_globals.PRETTY_APP_NAME, pretty_app_phone=my_globals.PRETTY_APP_PHONE)
+                    self.render('templates/show_location.html', location=loc, postalCode=zip_code, temp_f=temp_f, condition=condition, wind_condition=wind_condition, city=city, state=state, vars=self.vars, pretty_weather_app_name=my_globals.PRETTY_WEATHER_APP_NAME, pretty_weather_app_phone=my_globals.PRETTY_WEATHER_APP_PHONE, pretty_tides_app_name=my_globals.PRETTY_TIDES_APP_NAME, pretty_tides_app_phone=my_globals.PRETTY_TIDES_APP_PHONE,)
 
         else:
             self.redirect(users.create_login_url(self.request.uri))
@@ -134,7 +134,7 @@ class DeleteMember(webapp.RequestHandler):
                      'logout_url': users.create_logout_url(self.request.uri),
                      }
 
-        self.render('templates/delete.html', nickname=nickname, pretty_app_name=my_globals.PRETTY_APP_NAME, pretty_app_phone=my_globals.PRETTY_APP_PHONE, app_name=my_globals.APP_NAME)
+        self.render('templates/delete.html', nickname=nickname, pretty_weather_app_name=my_globals.PRETTY_WEATHER_APP_NAME, pretty_weather_app_phone=my_globals.PRETTY_WEATHER_APP_PHONE, pretty_tides_app_name=my_globals.PRETTY_TIDES_APP_NAME, pretty_tides_app_phone=my_globals.PRETTY_TIDES_APP_PHONE, app_name=my_globals.APP_NAME)
 
     def render(self, path, **params):
         """Renders the template at the given path with the given parameters."""
@@ -182,7 +182,7 @@ class LatitudeOAuthCallbackHandler(webapp.RequestHandler):
                      'login_url': users.create_login_url(self.request.uri),
                      'logout_url': users.create_logout_url(self.request.uri),
                      }
-        self.render('templates/welcome.html', location=loc, email=their_email, passw=random_password, pretty_app_name=my_globals.PRETTY_APP_NAME, pretty_app_phone=my_globals.PRETTY_APP_PHONE, vars=self.vars)
+        self.render('templates/welcome.html', location=loc, email=their_email, passw=random_password, pretty_weather_app_name=my_globals.PRETTY_WEATHER_APP_NAME, pretty_weather_app_phone=my_globals.PRETTY_WEATHER_APP_PHONE, pretty_tides_app_name=my_globals.PRETTY_TIDES_APP_NAME, pretty_tides_app_phone=my_globals.PRETTY_TIDES_APP_PHONE, vars=self.vars)
 
     def render(self, path, **params):
         """Renders the template at the given path with the given parameters."""
