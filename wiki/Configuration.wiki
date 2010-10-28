@@ -9,3 +9,4 @@ To setup Moveable Weather, you'll have to set up the following major components:
   # [TropoSetup Create and setup  new Tropo app.]
   # [RegisterDomain Register the domain of your new App Engine app.]
   # [BulkLoad Bulk load zip code data.]
+  # [BulkLoadTideStations For Moveable Tides, bulk load tide station data.]
