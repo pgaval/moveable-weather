@@ -2,7 +2,7 @@
 
 = Introduction =
 
-The better.csv file, [http://www.boutell.com/zipcodes/ freely available], has been altered slightly, for use with Moveable Tides. An extra field, called `has_location` has been added to the end of each line. Initially, the value of this field is set to `0` for each line. After you upload the `better.csv` file, you will need to loop through each record in this data, calling a special method called `update_location`. The purpose of this method, inherited from the `GeoName` class, is to ensure that each latitude/longitude pair is stored in a _geohash_. This will enable _proximity searches_, which are critical.
+The better.csv file, [http://opendap.co-ops.nos.noaa.gov/ioos-dif-sos/get/getcapabilities/nwlonstations.jsp freely available, here, in slighlty different form], has been altered slightly, for use with Moveable Tides. An extra field, called `has_location` has been added to the end of each line. Initially, the value of this field is set to `0` for each line. After you upload the `better.csv` file, you will need to loop through each record in this data, calling a special method called `update_location`. The purpose of this method, inherited from the `GeoName` class, is to ensure that each latitude/longitude pair is stored in a _geohash_. This will enable _proximity searches_, which are critical.
 
 The reason proximity searches are necessary is that each tide station in the database is associated with a partilar latitude/longitude pair which we can thing of as occupying a location along the coast. But data about a user's location, coming in via Google Latitude, will be arbitrary, and thus, we'll need to be able to compute which tide station's "neighborhood" it falls within. This is what a proximity search is.
 
