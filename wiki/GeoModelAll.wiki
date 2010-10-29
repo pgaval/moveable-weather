@@ -4,5 +4,5 @@
 
 = Details =
 
-  * [GeoModel Indexing weather data]
+  * [GeoModelWeather Indexing weather data]
   * [GeoModelTides Inexing tides data]
