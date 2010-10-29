@@ -1,4 +1,4 @@
-#summary Using the [GeoModel http://pypi.python.org/pypi/geomodel/0.2.0]  package for "indexing and querying geospatial tides data in App Engine".
+#summary Using the GeoModel package for "indexing and querying geospatial tides data in App Engine".
 
 = Introduction =
 
@@ -43,4 +43,3 @@ There's one more step. This is necessary because not all the tide stations actua
         while (1)
             make clean_ports LIMIT=20 CURSOR_NAME=my_port_cleaner_cursor3
     }}}
-
