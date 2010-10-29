@@ -1,0 +1,8 @@
+#summary In order for the data for both Moveable Weather and now Moveable Tides, to work property, it must first be place in a "geohash".
+
+
+
+= Details =
+
+  * [GeoModel Indexing weather data]
+  * [GeoModelTides Inexing tides data]
