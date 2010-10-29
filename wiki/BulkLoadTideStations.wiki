@@ -20,9 +20,3 @@ Here are the steps to use bulk upload to upload the tide station data.
         while (1)
             make port_fill LIMIT=20
     }}}
-
-# There's one more step. This is necessary because not all the tide stations actually have tidal data. Some of them come up blank. So we do a bit of preprocessing, looping through each tide station to see if it contains a tidal table. We then mark the row of data, setting a field called "good_data" to either 1 or 0. Again, just like the previous step, we perform this operation by doing a loop from our command prompt.
-    {{{
-        while (1)
-            make clean_ports LIMIT=20 CURSOR_NAME=my_port_cleaner_cursor3
-    }}}
