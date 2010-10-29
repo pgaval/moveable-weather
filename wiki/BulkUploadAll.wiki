@@ -8,4 +8,4 @@ Multiple Weather, and now, Multiple Tides, each have their own Geo data.
 = Details =
 
   * [BulkUpload Uploading weather data]
-  * [BulkUploadTides Uploading tide data]
+  * [BulkUploadTideStations Uploading tide data]
