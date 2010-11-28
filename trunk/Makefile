@@ -8,7 +8,7 @@ clean_for_svn:
 	find ./ -name '*.pyc' -exec rm '{}' \;
 
 export:
-	tar cvf - * | (cd ~/svn/moveable-weather; tar xvf -)
+	tar cvf - `cat MANIFEST` | (cd ~/svn/moveable-weather; tar xvf -)
 	cp app/my_globals.py.template ~/svn/moveable-weather/app/my_globals.py
 
 

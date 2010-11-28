@@ -42,6 +42,8 @@ import my_globals
 import tropo
 from weather import *
 from tides import *
+from wikipedia import *
+from nrhp import *
 
 from random import choice
 from google.appengine.api import mail
@@ -268,6 +270,80 @@ class UpdatePortLocations(webapp.RequestHandler):
         self.response.out.write ("""that was easy. Work was done %s number times: %s""" % (work_was_done, work_was_done_counter))
 
 
+class UpdateNRHPLocations(webapp.RequestHandler):
+    def get(self):
+        logging.info ("Updating my nrhp locations")
+        limit = self.request.get('limit')
+        limit = int (limit)
+        cursor_name = self.request.get('cursor_name')
+        query = model.NRHP.all()
+# If the app stored a cursor during a previous request, use it.
+        query.order('refnum')
+        last_cursor = memcache.get(cursor_name)
+        if last_cursor:
+            query.with_cursor(last_cursor)
+
+	results = query.fetch(limit=limit)
+        # Store the latest cursor for the next request.
+        cursor = query.cursor()
+        memcache.set(cursor_name, cursor)
+        
+        work_was_done = "no"
+        work_was_done_counter = 0
+        for rec in results:
+            lat = rec.latitude
+            lng = rec.longitude
+            refnum = rec.refnum
+#            logging.info ("Checking refnum: %s" % refnum)
+            if (rec.has_location == 1):
+                pass
+            else:
+                latlng = "%s,%s" % (lat,lng)
+                if (not rec.location):
+ #                   logging.info ("lat: %s lng: %s latlng: %s refnum: %s" % (lat, lng, latlng, refnum))
+                    work_was_done_counter += 1
+                    work_was_done = "yes"
+                    rec.location = db.GeoPt(latlng)
+                    rec.has_location = 1
+                    rec.update_location()
+                    rec.put()
+        self.response.out.write ("""that was easy. Work was done %s number times: %s""" % (work_was_done, work_was_done_counter))
+
+class NotUpdatedNRHPLocations(webapp.RequestHandler):
+    def get(self):
+        logging.info ("Checking unhashed  nrhp locations")
+        limit = self.request.get('limit')
+        limit = int (limit)
+        cursor_name = self.request.get('cursor_name')
+        query = model.NRHP.all()
+# If the app stored a cursor during a previous request, use it.
+        query.order('refnum')
+	query.filter('has_location = ', 0)
+        last_cursor = memcache.get(cursor_name)
+        if last_cursor:
+            query.with_cursor(last_cursor)
+
+	results = query.fetch(limit=limit)
+        # Store the latest cursor for the next request.
+        cursor = query.cursor()
+        memcache.set(cursor_name, cursor)
+        
+        work_was_done = "no"
+        work_was_done_counter = 0
+        for rec in results:
+            lat = rec.latitude
+            lng = rec.longitude
+            refnum = rec.refnum
+#            logging.info ("Checking refnum: %s" % refnum)
+            if (rec.has_location == 1):
+                pass
+            else:
+                latlng = "%s,%s" % (lat,lng)
+		self.response.out.write ("""<br/>No location %s with title %s""" % (refnum, rec.title))
+        self.response.out.write ("""that was easy.""")
+
+
+
 class HelloTropo(webapp.RequestHandler):
     def post(self):
     	logging.info ("Hi there")
@@ -339,10 +415,17 @@ if __name__ == '__main__':
         ('/tropo_multi_weather_continue.py', MultiWeatherContinue),  
         ('/tropo_multi_tides.py', MultiTide),  
         ('/tropo_multi_tides_continue.py', MultiTideContinue),  
+        ('/tropo_wikipedia.py', MultiWikipedia),  
+        ('/tropo_wikipedia_continue.py', MultiWikipediaContinue),  
+        ('/tropo_multi_nrhp.py', MultiNRHP),  
+        ('/tropo_multi_nrhp_continue.py', MultiNRHPContinue),  
+
         ('/set_my_oauth', SetMyOauth),
         ('/delete_member', DeleteMember),
         ('/locations_update', UpdateLocations),
         ('/port_locations_update', UpdatePortLocations),
+	('/nrhp_locations_update', UpdateNRHPLocations),
+	('/nrhp_locations_check', NotUpdatedNRHPLocations),
         ('/clean_ports', PortCleaner), #cuz they don't have tide data
         (GOOGLE_VERIFY_PATH, GoogleVerifyDomain),
         (OAUTH_CALLBACK_PATH, LatitudeOAuthCallbackHandler)
