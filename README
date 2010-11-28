@@ -42,3 +42,85 @@ Notes:
 troubleshooting: if you can login but oauth does nothing, ie blank screen,
 try deleting member data, to force oauth to re-authorize
 
+
+-------
+
+http://ws.geonames.org/findNearByWeatherJSON?lat=43&lng=-2
+
+http://ws.geonames.org/findNearbyWikipedia?lat=43.06757&lng=-70.76137
+
+http://ws.geonames.org/findNearbyWikipediaJSON?lat=43.06757&lng=-70.76137
+
+---
+{ "geonames" : [ { "countryCode" : "  ",
+        "distance" : "0.9255",
+        "elevation" : 0,
+        "feature" : "landmark",
+        "lang" : "en",
+        "lat" : 43.0758333333333,
+        "lng" : -70.760000000000005,
+        "population" : 0,
+        "summary" : "The Music Hall is a 906-seat theater located in Portsmouth, New Hampshire, in the United States. Built in 1878, The Music Hall claims to be the oldest operating theater in New Hampshire and the 14th oldest in the United States. An independent venue that offers music, readings, dance and cinema, The Music Hall brings in 90,000 visitors a year [http://themusichall.org/aboutus/index.asp] (...)",
+        "title" : "The Music Hall (Portsmouth)",
+        "wikipediaUrl" : "en.wikipedia.org/wiki/The_Music_Hall_%28Portsmouth%29"
+      },
+      { "countryCode" : "  ",
+        "distance" : "0.9334",
+        "elevation" : 0,
+        "feature" : "city",
+        "lang" : "en",
+        "lat" : 43.067037999999997,
+        "lng" : -70.772837999999993,
+        "population" : 0,
+        "summary" : "Portsmouth, New Hampshire is a city in Rockingham County, New Hampshire in the United States of America. It is the fourth-largest community in the countyThe Rockingham County towns (not cities) of Derry (34,021), Salem (28,112), and Londonderry (23,236) had greater populations as of the 2000 census., with a population of 20,784 as of the 2000 census (...)",
+        "thumbnailImg" : "http://www.geonames.org/img/wikipedia/38000/thumb-37852-100.jpg",
+        "title" : "Portsmouth, New Hampshire",
+        "wikipediaUrl" : "en.wikipedia.org/wiki/Portsmouth%2C_New_Hampshire"
+      },
+      { "countryCode" : "  ",
+        "distance" : "1.0022",
+        "elevation" : 0,
+        "feature" : "landmark",
+        "lang" : "en",
+        "lat" : 43.059166666666698,
+        "lng" : -70.765833333333305,
+        "population" : 0,
+        "summary" : "Portsmouth High School is a public high school located in Portsmouth, New Hampshire with a current enrollment of approximately 1,100. Accredited by the New England Association of Colleges and Secondary Schools and the State of New Hampshire, the school serves the communities of Portsmouth, Rye, Greenland, New Castle and Newington, New Hampshire.[http://www.cityofportsmouth (...)",
+        "title" : "Portsmouth High School (New Hampshire)",
+        "wikipediaUrl" : "en.wikipedia.org/wiki/Portsmouth_High_School_%28New_Hampshire%29"
+      },
+      { "countryCode" : "  ",
+        "distance" : "1.6686",
+        "elevation" : 0,
+        "feature" : "city",
+        "lang" : "en",
+        "lat" : 43.072681000000003,
+        "lng" : -70.780685000000005,
+        "population" : 0,
+        "summary" : "The Portsmouth Traffic Circle is a four-point traffic circle in the city of Portsmouth, New Hampshire. The southern exit of the circle provides access to Interstate 95 north and south, although only northbound I-95 traffic enters here. The eastern and northern exits are part of the U.S. Route 1 Bypass, and the western exit marks the eastern end of U.S (...)",
+        "title" : "Portsmouth Traffic Circle",
+        "wikipediaUrl" : "en.wikipedia.org/wiki/Portsmouth_Traffic_Circle"
+      },
+      { "countryCode" : "US",
+        "distance" : "1.685",
+        "elevation" : 0,
+        "feature" : "landmark",
+        "lang" : "en",
+        "lat" : 43.0822222222222,
+        "lng" : -70.766666666666694,
+        "population" : 0,
+        "summary" : "that pioneered the American version of the teardrop hull form (sometimes referred to as an \"''Albacore'' hull\") of modern submarines. The design was directly influenced by the Type XXI U-boat submarine, and the Soviets had already gained a lead over the US by producing several of these advanced designs (...)",
+        "thumbnailImg" : "http://www.geonames.org/img/wikipedia/66000/thumb-65455-100.jpg",
+        "title" : "USS Albacore (AGSS-569)",
+        "wikipediaUrl" : "en.wikipedia.org/wiki/USS_Albacore_%28AGSS-569%29"
+      }
+    ] }
+
+
+----
+
+http://ws.geonames.org/findNearbyWikipediaJSON?lat=43.06757&lng=-70.76137&radius=5&maxRows=30
+
+http://ws.geonames.org/findNearbyWikipediaJSON?lat=43.06757&lng=-70.76137&radius=5&maxRows=30
+
+http://ws.geonames.org/findNearbyWikipediaJSON?lat=40.73373&lng=-73.99017&radius=5&maxRows=30

@@ -102,4 +102,37 @@ transformers:
       import_transform: float
       # Type: String Stats: 47 properties of this type in this kind.
 
+# nrhp
+- kind: NRHP
+  connector: csv
+
+  # post_import_function: transies.post_import_zipcode
+  property_map:
+    - property: __key__
+      external_name: key
+      export_transform: transform.key_id_or_name_as_string
+
+    - property: title
+      external_name: title
+      # Type: String Stats: 47 properties of this type in this kind.
+
+    - property: refnum
+      external_name: refnum
+      # Type: String Stats: 47 properties of this type in this kind.
+
+    - property: has_location
+      import_transform: int
+      external_name: has_location
+      # Type: String Stats: 47 properties of this type in this kind.
+
+    - property: latitude
+      import_transform: float
+      external_name: latitude
+      # Type: String Stats: 47 properties of this type in this kind.
+
+    - property: longitude
+      external_name: longitude
+      import_transform: float
+      # Type: String Stats: 47 properties of this type in this kind.
+
 

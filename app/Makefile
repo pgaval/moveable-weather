@@ -8,6 +8,29 @@ upload_ports:
 upload_ports_test:
 	appcfg.py upload_data --config_file=bulkloader.yaml --filename=other.csv --kind=Port .
 
+upload_northeast_nrhp:
+	appcfg.py upload_data --config_file=bulkloader.yaml --filename=northeast_doctored.csv --kind=NRHP .
+
+upload_midwest_nrhp:
+	appcfg.py upload_data --config_file=bulkloader.yaml --filename=midwest_doctored.csv --kind=NRHP .
+# got this far
+upload_west_nrhp:
+	appcfg.py upload_data --config_file=bulkloader.yaml --filename=west_doctored.csv --kind=NRHP .
+
+upload_south2_nrhp:
+	appcfg.py upload_data --config_file=bulkloader.yaml --filename=south2_doctored.csv --kind=NRHP .
+
+upload_south1_nrhp:
+	appcfg.py upload_data --config_file=bulkloader.yaml --filename=south1_doctored.csv --kind=NRHP .
+
+
+
+
+upload_northeast_small:
+	appcfg.py upload_data --config_file=bulkloader.yaml --filename=small_doctored.csv --kind=NRHP .
+
+
+
 upload_test:
 	appcfg.py upload_data --config_file=bulkloader.yaml --filename=short.csv --kind=ZipCode .
 
@@ -23,12 +46,22 @@ fill:
 port_fill:
 	curl -X GET 'http://2.latest.${APP}.appspot.com/port_locations_update?limit=${LIMIT}&cursor_name=${CURSOR_NAME}'
 
+nrhp_fill:
+#	curl -X GET 'http://4.latest.${APP}.appspot.com/nrhp_locations_update?limit=${LIMIT}&cursor_name=${CURSOR_NAME}'
+	curl -X GET 'http://${APP}.appspot.com/nrhp_locations_update?limit=${LIMIT}&cursor_name=${CURSOR_NAME}'
+
+nrhp_check:
+#	curl -X GET 'http://4.latest.${APP}.appspot.com/nrhp_locations_update?limit=${LIMIT}&cursor_name=${CURSOR_NAME}'
+	curl -X GET 'http://${APP}.appspot.com/nrhp_locations_check?limit=${LIMIT}&cursor_name=${CURSOR_NAME}'
+
 # make fill LIMIT=200 CURSOR_NAME=my_cursor
 # make port_fill LIMIT=20 CURSOR_NAME=my_port_cursor
+# make nrhp_fill LIMIT=1000 CURSOR_NAME=my_nrhp_cursor
+# make nrhp_check LIMIT=1000 CURSOR_NAME=my_nrhp_checker_cursor
 
 # Because some ports don't have tide data
 clean_ports:
-	curl -X GET 'http://2.latest.${APP}.appspot.com/clean_ports?limit=${LIMIT}&cursor_name=${CURSOR_NAME}'
+	curl -X GET 'http://${APP}.appspot.com/clean_ports?limit=${LIMIT}&cursor_name=${CURSOR_NAME}'
 
 # make clean_ports LIMIT=20 CURSOR_NAME=my_port_cleaner_cursor3
 

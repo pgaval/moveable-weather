@@ -403,7 +403,7 @@ class TideClass(webapp.RequestHandler):
                 if abbrev in my_globals.STATE_ABBREV:
                     state = my_globals.STATE_ABBREV[abbrev]
                     place = place.replace(abbrev, state)
-            trop.say("""Now, from %s at %s the height of the water is %.2f feet. Tide is %s. %s tide of %.2f feet will be  at %s. After that, %s tide of %.2f feet will be at %s""" % (place, current_time, current_height, direction, tide_polarity1, next_tide_height, next_tide_time, tide_polarity2, next_tide_height2, next_tide_time2))
+            Trop.say("""Now, from %s at %s the height of the water is %.2f feet. Tide is %s. %s tide of %.2f feet will be  at %s. After that, %s tide of %.2f feet will be at %s""" % (place, current_time, current_height, direction, tide_polarity1, next_tide_height, next_tide_time, tide_polarity2, next_tide_height2, next_tide_time2))
 
         if (continuously):
             cellnumber = member.cellnumber
