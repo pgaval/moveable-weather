@@ -24,16 +24,25 @@ handlers:
 - url: /set_my_oauth
   script: main.py
 
+- url: /history_demo
+  script: main.py
+
 - url: /hello_tropo.py
   script: main.py
 
 - url: /tropo_multi_weather.py
   script: main.py
 
+- url: /tropo_multi_weather_demo.py
+  script: main.py
+
 - url: /tropo_multi_weather_continue.py
   script: main.py
 
 - url: /tropo_multi_tides.py
+  script: main.py
+
+- url: /tropo_multi_tides_demo.py
   script: main.py
 
 - url: /tropo_multi_tides_continue.py
@@ -73,6 +82,9 @@ handlers:
 - url: /tropo_multi_nrhp.py
   script: main.py
 
+- url: /tropo_multi_nrhp_demo.py
+  script: main.py
+
 - url: /tropo_multi_nrhp_continue.py
   script: main.py
 
@@ -100,6 +112,11 @@ handlers:
 - url: /favicon.ico
   static_files: static/images/favicon.ico
   upload: static/images/favicon.ico
+
+- url: /jpj_screen.jpg
+  static_files: static/images/jpj_screen.jpg
+  upload: static/images/jpj_screen.jpg
+
 
 
 

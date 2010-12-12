@@ -404,6 +404,7 @@ class MultiNRHPContinue(webapp.RequestHandler):
 class MultiNRHP(Membership):
     def post(self):
         id = self.request.get('id')
+            
 	logging.info ("Mutihistoric places ok, that id is: %s" % id)
 	logging.info ("I am here. Ya got that?")
 	if (not id):
@@ -433,6 +434,42 @@ class MultiNRHP(Membership):
         else:
             mw = MultiNRHP()
             mw.authenticate_member(id)
+
+
+class MultiNRHPDemo(Membership):
+    def post(self):
+        id = '7742717100'
+            
+	logging.info ("Mutihistoric places ok, that id is: %s" % id)
+	logging.info ("I am here. Ya got that?")
+	if (not id):
+	    session_json = self.request.body
+	    session = tropo.Session(session_json)
+	    session_dict = session.dict
+	    id = session_dict['from']['id']
+	logging.info ("id: %s" % id)
+	member = self.check_member(id)
+
+        if (member):
+            lat = ""
+            lng = ""
+            w = NRHPClass(lat, lng)
+            wjson = w.tropo_report_nrhp(member, 1)
+            self.response.out.write(wjson)
+        else:
+            self.authenticate_member(id)
+
+    def get(self):
+        id = self.request.get('cellnumber')
+	member = self.check_member(id)
+        if (member):
+            w = NRHPClass()
+            wjson = w.tropo_report_nrhp(member, 1)
+            self.response.out.write(wjson)
+        else:
+            mw = MultiNRHP()
+            mw.authenticate_member(id)
+
 
 
 
