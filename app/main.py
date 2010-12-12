@@ -113,7 +113,7 @@ class Main(webapp.RequestHandler):
                     loc = weather_dict['loc']
                     zip_code = weather_dict['zip_code']
 
-                    self.render('templates/show_location.html', location=loc, postalCode=zip_code, temp_f=temp_f, condition=condition, wind_condition=wind_condition, city=city, state=state, vars=self.vars, pretty_weather_app_name=my_globals.PRETTY_WEATHER_APP_NAME, pretty_weather_app_phone=my_globals.PRETTY_WEATHER_APP_PHONE, pretty_tides_app_name=my_globals.PRETTY_TIDES_APP_NAME, pretty_tides_app_phone=my_globals.PRETTY_TIDES_APP_PHONE,)
+                    self.render('templates/show_location.html', location=loc, postalCode=zip_code, temp_f=temp_f, condition=condition, wind_condition=wind_condition, city=city, state=state, vars=self.vars, pretty_weather_app_name=my_globals.PRETTY_WEATHER_APP_NAME, pretty_weather_app_phone=my_globals.PRETTY_WEATHER_APP_PHONE, pretty_tides_app_name=my_globals.PRETTY_TIDES_APP_NAME, pretty_tides_app_phone=my_globals.PRETTY_TIDES_APP_PHONE, pretty_history_app_name=my_globals.PRETTY_HISTORY_APP_NAME, pretty_history_app_phone=my_globals.PRETTY_HISTORY_APP_PHONE)
 
         else:
             self.redirect(users.create_login_url(self.request.uri))
@@ -121,6 +121,15 @@ class Main(webapp.RequestHandler):
     def render(self, path, **params):
         """Renders the template at the given path with the given parameters."""
         self.response.out.write(webapp.template.render(os.path.join(ROOT, path), params))
+
+class HistoryDemo(webapp.RequestHandler):
+    def get(self):
+        self.render('templates/history_demo.html',pretty_weather_app_name=my_globals.PRETTY_WEATHER_APP_NAME, pretty_weather_app_demo_phone=my_globals.PRETTY_WEATHER_APP_DEMO_PHONE, pretty_tides_app_name=my_globals.PRETTY_TIDES_APP_NAME, pretty_tides_app_demo_phone=my_globals.PRETTY_TIDES_APP_DEMO_PHONE, pretty_history_app_name=my_globals.PRETTY_HISTORY_APP_NAME, pretty_history_app_demo_phone=my_globals.PRETTY_HISTORY_APP_DEMO_PHONE)
+
+    def render(self, path, **params):
+        """Renders the template at the given path with the given parameters."""
+        self.response.out.write(webapp.template.render(os.path.join(ROOT, path), params))
+
 
 class DeleteMember(webapp.RequestHandler):
     def get(self):
@@ -408,6 +417,7 @@ class SetMyOauth(webapp.RequestHandler):
 if __name__ == '__main__':
     run_wsgi_app(webapp.WSGIApplication([
         ('/', Main),  
+	('/history_demo', HistoryDemo),
         ('/set_my_oauth', SetMyOauth),
         ('/check_password', TropoCheckPassword),
         ('/hello_tropo.py', HelloTropo),  
@@ -418,6 +428,7 @@ if __name__ == '__main__':
         ('/tropo_wikipedia.py', MultiWikipedia),  
         ('/tropo_wikipedia_continue.py', MultiWikipediaContinue),  
         ('/tropo_multi_nrhp.py', MultiNRHP),  
+        ('/tropo_multi_nrhp_demo.py', MultiNRHPDemo),  
         ('/tropo_multi_nrhp_continue.py', MultiNRHPContinue),  
 
         ('/set_my_oauth', SetMyOauth),

@@ -59,6 +59,9 @@ class Membership (webapp.RequestHandler):
 
     def check_member(self, id):
         logging.info ("Checking %s to see if they are a member" % id)
+        # if (id == '7742717100'):
+          #  logging.info ("Now that is a very SPECIAL member")
+           #  id = '6039570051'
         try:
 	    q =  model.Member.all().filter('cellnumber =', id)
             members = q.fetch(1)

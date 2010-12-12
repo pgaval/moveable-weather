@@ -11,12 +11,59 @@
     var is_member = {{ vars.member|yesno:"true,false" }};
     var is_mobile = {{ vars.is_mobile|yesno:"true,false" }};
   </script>
+
+
+
+
+
+<!--
+ <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script src="http://s.phono.com/releases/0.1/jquery.phono.js"></script>
+-->
   {% block scripts %}{% endblock %}
 </head>
 
 <body>
 
     <h3 align=center>{{pretty_app_name}}</h3>
+<!-- 
+<input id="call" type="button" disabled="true" value="Loading..." />
+<input type="button" class="btn digit" value="1"/>
+
+    <span id="status"></span>
+
+    <script>
+    $(document).ready(function(){
+      var phono = $.phono({apiKey: "5f1ed0c918ee8822f537ecd06a07ac07",
+        onReady: function() {
+          $("#call").attr("disabled", false).val("Call");
+        }
+      });
+
+	$('.digit').live('click', function() {
+		var thisCall = $(this).closest(".callHldr").attr("id");
+		var theDigit = $(this).attr("value");
+		calls[thisCall].digit(theDigit);
+	});
+
+      $("#call").click(function() {
+        $("#call").attr("disabled", true).val("Busy");
+        phono.phone.dial("857-239-0130", {
+          onRing: function() {
+            $("#status").html("Ringing");
+          },
+          onAnswer: function() {
+            $("#status").html("Answered");
+          },
+          onHangup: function() {
+            $("#call").attr("disabled", false).val("Call");
+            $("#status").html("Hangup");
+          }
+        });
+      });
+    })
+    </script>
+-->
 
 <h4>User</h4>
       <ul>
@@ -42,6 +89,7 @@
 
       <li>Call {{pretty_weather_app_name}} at {{pretty_weather_app_phone}}
       <li>Call {{pretty_tides_app_name}} at {{pretty_tides_app_phone}}
+      <li>Call {{pretty_history_app_name}} at {{pretty_history_app_phone}}
       {% if vars.user %}
         {% if vars.member %}
 
