@@ -10,4 +10,4 @@ To setup Moveable Weather, you'll have to set up the following major components:
   # [RegisterDomain Register the domain of your new App Engine app.]
   # [BulkLoad Bulk load zip code data.]
   # [BulkLoadTideStations For Moveable Tides, bulk load tide station data.]
- # [BulkLoadTideStations For Moveable History, bulk load NRHP data.]
+  # [BulkLoadTideStations For Moveable History, bulk load NRHP data.]
